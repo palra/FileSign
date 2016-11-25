@@ -1,0 +1,13 @@
+{
+    "name": "palra/file-sign",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Loïc Payol",
+            "email": "loicpayol@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "^2.0"
+    }
+}
