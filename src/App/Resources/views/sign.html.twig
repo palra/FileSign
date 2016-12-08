@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
+            <h1>Générateur de signature</h1>
+            <img src="/img/logo.png" alt="Logo Filogis">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        {% if error is defined %}
+            <div class="col-md-6 col-md-offset-3 col-sm-12">
+                <div class="alert alert-danger">
+                    <p>
+                        <b>Oups !</b> Une erreur est survenue.
+                    </p>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-6 col-md-offset-3 col-sm-12">
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>
+                        <b>Attention !</b> Cette interface est à accès
+                        restreint. Seules les personnes autorisées peuvent
+                        l'utiliser.
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <form action="{{ path('fs_sign_post') }}" method="POST"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Fichier</label>
+                    <input type="file" name="file" class="form-control"
+                           required>
+                    <p class="help-block">Sélectionnez le fichier à signer</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="passphrase">Phrase de passe</label>
+                    <input type="password" name="passphrase"
+                           class="form-control" title="Phrase de passe">
+                    <p class="help-block">Entrez la phrase de passe qui vous a
+                        été fournie</p>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Vérifier
+                </button>
+            </form>
+
+            <hr>
+        </div>
+
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <div class="text-center">
+                <a href="{{ path('fs_verify_index') }}">Interface de
+                    vérification</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
