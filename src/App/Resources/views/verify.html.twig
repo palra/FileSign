@@ -3,52 +3,24 @@
 {% block container %}
     <div class="row text-center">
         <div class="col-md-6 col-md-offset-3 col-sm-12">
-            <h1>Vérification d'authenticité</h1>
+            <h1>{{ 'verify.title'|trans }}</h1>
             <a href="{{ path('fs_verify_index') }}">
-                <img src="/img/logo.png" alt="Logo Filogis">
+                <img src="/img/logo.png" alt="{{ 'img.logo' | trans }}">
             </a>
             <hr>
         </div>
     </div>
     <div class="row">
-        {% if error is defined %}
-            <div class="col-md-6 col-md-offset-3 col-sm-12">
-                <div class="alert alert-danger">
-                    <p>
-                        <b>Oups !</b> Une erreur est survenue.
-                    </p>
-                </div>
-            </div>
-        {% endif %}
+        {% include 'error.html.twig' %}
         {% if valid is defined %}
             <div class="col-md-6 col-md-offset-3 col-sm-12">
                 <div class="alert alert-{{ valid ? 'success' : 'warning' }}">
                     {% if valid %}
-                        <b>Succès !</b> Le fichier envoyé est authentique.
+                        <b>{{ 'verify.valid.true.success'|trans }}</b> {{ 'verify.valid.true.message'|trans }}
                     {% else %}
-                        <b>Attention
-                            !</b> Le fichier envoyé n'est pas authentique.
+                        <b>{{ 'verify.valid.false.warning'|trans }}</b> {{ 'verify.valid.false.message'|trans }}
                         <hr>
-                        Vérifiez les points suivants :
-                        <ul>
-                            <li>Avez-vous envoyé le bon fichier ?</li>
-                            <li>Avez-vous envoyé la bonne signature numérique
-                                ?
-                            </li>
-                            <li>La signature est-elle bien celle associée au
-                                fichier envoyé ?
-                            </li>
-                            <li>Il se peut qu'une erreur de transfert ait eu
-                                lieu lors du transfert
-                                initial du document. Tentez de retélécharger le
-                                document à vérifier
-                            </li>
-                        </ul>
-                        <br>
-                        Si malgré tout le test d'authenticité échoue encore,
-                        contactez votre traducteur afin de procéder
-                        à un nouvel échange de document.
-
+                        {{ 'verify.valid.false.hint'|trans|raw }}
                     {% endif %}
                 </div>
             </div>
@@ -57,23 +29,22 @@
             <form action="{{ path('fs_verify_post') }}" method="POST"
                   enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="file">Fichier</label>
+                    <label for="file">{{ 'verify.form.file.title'|trans }}</label>
                     <input type="file" name="file" class="form-control"
                            required>
-                    <p class="help-block">Sélectionnez le fichier à vérifier</p>
+                    <p class="help-block">{{ 'verify.form.file.help'|trans }}</p>
                 </div>
 
                 <div class="form-group">
-                    <label for="sign">Signature numérique</label>
+                    <label for="sign">{{ 'verify.form.sign.title'|trans }}</label>
                     <input type="file" name="sign" class="form-control"
                            required>
-                    <p class="help-block">Sélectionnez la signature numérique
-                        qui vous a été fournie</p>
+                    <p class="help-block">{{ 'verify.form.sign.help'|trans }}</p>
                 </div>
 
 
                 <button type="submit" class="btn btn-primary btn-block">
-                    Vérifier
+                    {{ 'verify.form.submit'|trans }}
                 </button>
             </form>
 
@@ -81,7 +52,7 @@
         </div>
 
         <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
-            <h2>FAQ</h2>
+            <h2>{{ 'verify.faq.title'|trans }}</h2>
             <div class="panel-group" id="accordion" role="tablist"
                  aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -90,23 +61,14 @@
                             <a role="button" data-toggle="collapse"
                                data-parent="#accordion" href="#collapse1"
                                aria-controls="collapse1">
-                                Comment fonctionne le système de vérification
-                                d'authenticité ?
+                                {{ 'verify.faq.q1.question'|trans }}
                             </a>
                         </h4>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse"
                          role="tabpanel" aria-labelledby="heading1">
                         <div class="panel-body">
-                            Nous utilisons le principe de la cryptographie
-                            asymétrique, avec des clefs RSA. Le fichier de
-                            signatutre, lui, est généré
-                            avec l'algorithme SHA512, ce qui permet de détecter
-                            le moindre changement dans le fichier source.
-                            Essayez par vous-même :
-                            modifiez très légèrement le fichier à vérifier, vous
-                            verrez alors que le fichier sera marqué comme
-                            non-authentique.
+                            {{ 'verify.faq.q1.response'|trans }}
                         </div>
                     </div>
                 </div>
@@ -116,16 +78,14 @@
                             <a role="button" data-toggle="collapse"
                                data-parent="#accordion" href="#collapse2"
                                aria-controls="collapse2">
-                                J'aimerais vérifier l'authenticité d'un document
-                                reçu, mais je n'ai pas de signature. Que faire ?
+                                {{ 'verify.faq.q2.question'|trans }}
                             </a>
                         </h4>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse"
                          role="tabpanel" aria-labelledby="heading2">
                         <div class="panel-body">
-                            Demandez à votre traducteur de vous envoyer le
-                            fichier de signature numérique.
+                            {{ 'verify.faq.q2.response'|trans }}
                         </div>
                     </div>
                 </div>
@@ -135,23 +95,14 @@
                             <a role="button" data-toggle="collapse"
                                data-parent="#accordion" href="#collapse3"
                                aria-controls="collapse3">
-                                Je n'ai pas confiance en ce site. J'aimerais
-                                vérifier moi-même l'authenticité de mon
-                                document. Comment faire ?
+                                {{ 'verify.faq.q3.question'|trans }}
                             </a>
                         </h4>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse"
                          role="tabpanel" aria-labelledby="heading3">
                         <div class="panel-body">
-                            Vous ne faites pas confiance en ce site, et ceci est
-                            tout à fait légitime. Si vous vous posez cette
-                            question, vous savez à priori
-                            comment fonctionne la vérification de signatures
-                            numériques. Vous pouvez donc télécharger
-                            <a href="{{ path('fs_public_key') }}">notre clé
-                                publique</a> et vérifier par vous même
-                            l'authenticité du document.
+                            {{ 'verify.faq.q3.response'|trans({'%href%': path('fs_public_key')})|raw }}
                         </div>
                     </div>
                 </div>
