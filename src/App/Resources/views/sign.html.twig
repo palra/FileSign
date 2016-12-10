@@ -28,10 +28,19 @@
         <div class="col-md-6 col-md-offset-3 col-sm-12">
             <form action="{{ path('fs_sign_post') }}" method="POST"
                   enctype="multipart/form-data">
+
                 <div class="form-group">
-                    <label for="file">Fichier</label>
-                    <input type="file" name="file" class="form-control"
-                           required>
+                    <label>Fichier</label>
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                {{ 'verify.browse'|trans }}
+                                <input type="file" name="file"
+                                       style="display: none;">
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" readonly>
+                    </div>
                     <p class="help-block">Sélectionnez le fichier à signer</p>
                 </div>
 

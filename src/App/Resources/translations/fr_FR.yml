@@ -5,6 +5,7 @@ error: Une erreur est survenue # Message d'erreur général
 # Interface publique de vérification
 
 verify:
+    browse: Choissisez un fichier
     valid:
         "true":
             success: Succès !

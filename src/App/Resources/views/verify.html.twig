@@ -21,17 +21,34 @@
         <div class="col-md-6 col-md-offset-3 col-sm-12">
             <form action="{{ path('fs_verify_post') }}" method="POST"
                   enctype="multipart/form-data">
+
                 <div class="form-group">
-                    <label for="file">{{ 'verify.form.file.title'|trans }}</label>
-                    <input type="file" name="file" class="form-control"
-                           required>
+                    <label>{{ 'verify.form.file.title'|trans }}</label>
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                {{ 'verify.browse'|trans }}
+                                <input type="file" name="file"
+                                       style="display: none;">
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" readonly>
+                    </div>
                     <p class="help-block">{{ 'verify.form.file.help'|trans }}</p>
                 </div>
 
                 <div class="form-group">
-                    <label for="sign">{{ 'verify.form.sign.title'|trans }}</label>
-                    <input type="file" name="sign" class="form-control"
-                           required>
+                    <label>{{ 'verify.form.sign.title'|trans }}</label>
+                    <div class="input-group">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                {{ 'verify.browse'|trans }}
+                                <input type="file" name="sign"
+                                       style="display: none;">
+                            </span>
+                        </label>
+                        <input type="text" class="form-control" readonly>
+                    </div>
                     <p class="help-block">{{ 'verify.form.sign.help'|trans }}</p>
                 </div>
 
