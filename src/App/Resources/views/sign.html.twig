@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
 {% block header_title %}Générateur de signatures{% endblock %}
 
 {% block container %}
