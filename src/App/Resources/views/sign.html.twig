@@ -1,15 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}Générateur de signatures{% endblock %}
+
 {% block container %}
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
-            <h1>Générateur de signature</h1>
-            <a href="{{ path('fs_verify_index') }}">
-                <img src="/img/logo.png" alt="Logo Filogis">
-            </a>
-            <hr>
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-12">
             <div class="alert alert-danger">

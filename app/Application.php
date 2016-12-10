@@ -14,6 +14,7 @@ use Silex\Application as BaseApplication;
 use Silex\Provider\LocaleServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
 
@@ -30,15 +31,32 @@ class Application extends BaseApplication
         $this->register(new TwigServiceProvider(), array(
             'twig.path' => __DIR__ . '/../src/App/Resources/views'
         ));
+        $this->extendTwig();
+
+        $this->register(new Silex\Provider\SessionServiceProvider());
 
         $this->register(new LocaleServiceProvider());
         $this->register(new TranslationServiceProvider(), array(
-            'locale_fallbacks' => array('fr')
+            'locale_fallbacks' => array('fr_FR')
         ));
 
         $this->registerOpenSSL();
         $this->registerControllers();
         $this->configureTranslator();
+    }
+
+    private function extendTwig()
+    {
+        $this->extend('twig', function (\Twig_Environment $twig, Application $app) {
+            $twig->addFunction(new Twig_SimpleFunction('asset', function ($asset) use ($app) {
+                /** @var \Symfony\Component\HttpFoundation\RequestStack $stack */
+                $stack = $app['request_stack'];
+                $request = $stack->getCurrentRequest();
+                return $request->getBasePath() . $asset;
+            }));
+
+            return $twig;
+        });
     }
 
     private function registerOpenSSL()
@@ -80,6 +98,23 @@ class Application extends BaseApplication
             }
 
             return $translator;
+        });
+
+        $this->before(function (Request $request, Application $app) {
+            if ($request->hasSession()) {
+                if ($locale = $request->query->get('_locale', false)) {
+                    $request->getSession()->set('_locale', $locale);
+
+                    // Redirect to the same URI and removing _locale parameter
+                    $path = str_replace("_locale=$locale", '', $request->getUri());
+                    $path = str_replace("?&", "?", $path);
+                    $path = preg_replace('/\?$/', '', $path);
+
+                    return $app->redirect($path);
+                }
+
+                $request->setLocale($request->getSession()->get('_locale', $app['locale']));
+            }
         });
     }
 }

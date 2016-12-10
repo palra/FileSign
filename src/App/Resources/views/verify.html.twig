@@ -1,15 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block header_title %}{{ 'verify.title'|trans }}{% endblock %}
+
 {% block container %}
-    <div class="row text-center">
-        <div class="col-md-6 col-md-offset-3 col-sm-12">
-            <h1>{{ 'verify.title'|trans }}</h1>
-            <a href="{{ path('fs_verify_index') }}">
-                <img src="/img/logo.png" alt="{{ 'img.logo' | trans }}">
-            </a>
-            <hr>
-        </div>
-    </div>
     <div class="row">
         {% include 'error.html.twig' %}
         {% if valid is defined %}

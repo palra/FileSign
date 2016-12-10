@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>FileSign</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ 'title'|trans }}{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet"
+                  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                  crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('/css/flags.css') }}">
+            <style>
+                .flag {
+                    background-image: url({{ asset('/img/flags.png') }}) !important;
+                }
+            </style>
+        {% endblock %}
+    {% endblock %}
 </head>
 <body>
 {% block body %}
     <div class="container">
+        {% block header %}
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
+                    <h1>{% block header_title %}{% endblock %}</h1>
+                    <a href="{{ path('fs_verify_index') }}">
+                        <img src="{{ asset('/img/logo.png') }}"
+                             alt="{{ 'img.logo'|trans }}">
+                    </a>
+                    <div class="flags">
+                        <a href="?_locale=ca_ES" class="flag flag-ca_ES"></a>
+                        <a href="?_locale=zh_CN" class="flag flag-zh_CN"></a>
+                        <a href="?_locale=en_GB" class="flag flag-en_GB"></a>
+                        <a href="?_locale=es_ES" class="flag flag-es_ES"></a>
+                        <a href="?_locale=fr_FR" class="flag flag-fr_FR"></a>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        {% endblock %}
         {% block container %}
         {% endblock %}
     </div>

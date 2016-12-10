@@ -1,0 +1,52 @@
+.flag {
+    background: url('../img/flags.png') no-repeat 0 0;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    text-indent: -5000px;
+    overflow: hidden;
+}
+
+.flag-fr_FR {
+    background-position: 0 -34px
+}
+
+.flag-fr_FR:hover {
+    background-position: 0 0
+}
+
+.flag-en_GB {
+    background-position: -36px -34px
+}
+
+.flag-en_GB:hover {
+    background-position: -36px 0
+}
+
+.flag-es_ES {
+    background-position: -72px -34px
+}
+
+.flag-es_ES:hover {
+    background-position: -72px 0
+}
+
+.flag-ca_ES {
+    background-position: -108px -34px
+}
+
+.flag-ca_ES:hover {
+    background-position: -108px 0
+}
+
+.flag-zh_CN {
+    background-position: -144px -34px
+}
+
+.flag-zh_CN:hover {
+    background-position: -144px 0
+}
+
+.flags {
+    margin-top: 25px;
+}

@@ -1,5 +1,9 @@
-img.logo: Logo Filogis
-error: Une erreur est survenue
+title: Filogis # Texte affiché sur l'onglet courant du navigateur web
+img.logo: Logo Filogis # Texte alternatif pour le logo
+error: Une erreur est survenue # Message d'erreur général
+
+# Interface publique de vérification
+
 verify:
     valid:
         "true":
@@ -59,3 +63,5 @@ verify:
                 fonctionne la vérification de signatures numériques. Vous pouvez
                 donc télécharger <a href="%href%">notre clé publique</a> et
                 vérifier par vous même l'authenticité du document.
+
+# Interface de signature
