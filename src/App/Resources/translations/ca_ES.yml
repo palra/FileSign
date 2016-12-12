@@ -1,3 +1,48 @@
-# Remplissez ce document en vous basant sur fr_FR.yml.
-# Au fil de vos éditions, vous pourrez sauvegarder ce document et rafraîchir
-# la page web pour voir le résultat.
+title: Filogis
+img.logo: Logo Filogis
+error: S'ha produït un error
+verify:
+    browse: <TODO> À compléter <TODO>
+    valid:
+        "true":
+            success: "Molt bé! "
+            message:  L'arxiu enviat és autèntic.
+        "false":
+            warning: "Atenció! "
+            message:  L'arxiu enviat no és autèntic.
+            hint: |
+                Comproveu els punts següents:<ul>
+                    <li>¿Heu enviat l'arxiu correcte?</li>
+                    <li>¿Heu enviat la signatura digital
+                        correcte?</li>
+                    </li>
+                    <li>¿La signatura es la corresponent a el fitxer 
+                         que heu enviat?
+                    </li>
+                    <li>Pot ser que s”hagi produït un error 
+                         durant la carrega
+                         del document.</li> Intenta tornar a descarregar el document 
+                        
+                    </li>
+                <br>Si malgrat tot la prova d”autenticitat encara falla, contacti amb el seu traductor per obtenir un nou document.
+    title: Verificació d'autenticitat
+    form:
+        file:
+            title: Arxiu
+            help: Seleccioneu l”arxiu
+        sign:
+            title: Signatura digital
+            help: Seleccioneu la signatura digital que us han enviat
+        submit: Comprovar
+    faq:
+        title: PREGUNTES FREQÜENTS
+        q1:
+            question: "¿Com funciona el sistema de verificació d'autenticitat?"
+            response: |
+                    S”utilitza el principi de criptografia asimètrica, amb claus RSA. L'arxiu de signatura es genera amb l'algoritme SHA512, que permet detectar qualsevol canvi en el fitxer d'origen. Feu la següent comprovació: modifiqueu lleugerament l'arxiu, i veureu com es detecta com no-autèntic.
+        q2:
+            question: "M'agradaria comprovar l'autenticitat d'un document, però no tinc signatura digital. ¿Què puc fer?"
+            response: Demani al seu traductor que li envii l'arxiu de la signatura digital.
+        q3:
+            question: "M'agradaria consultar jo mateix l'autenticitat del document. ¿Com ho puc fer?"
+            response: "Si us heu plantejat aquesta pregunta, vol dir que ja sap com funciona el procès de verificació de signatures digitals. Així doncs, ja podeu descarregar la <a href=\"%href%\">nostra clau pública</a> i comprovar l'autenticitat del document."

@@ -28,6 +28,7 @@ class Application extends BaseApplication
         $values = array_merge($values, require __DIR__ . '/parameters.php');
         parent::__construct($values);
 
+
         $this->register(new TwigServiceProvider(), array(
             'twig.path' => __DIR__ . '/../src/App/Resources/views'
         ));
@@ -113,7 +114,12 @@ class Application extends BaseApplication
                     return $app->redirect($path);
                 }
 
-                $request->setLocale($request->getSession()->get('_locale', $app['locale']));
+                $app['locale'] = $request->getSession()->get('_locale', $app['locale']);
+                $request->setLocale($app['locale']);
+
+                /** @var Translator $trans */
+                $trans = $app['translator'];
+                $trans->setLocale($app['locale']);
             }
         });
     }
