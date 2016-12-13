@@ -1,7 +1,7 @@
 img.logo: Filogis Logo
 error: An error occurred
 verify:
-    error: Choose a file # Addition du 13 déc. 16h42 par Loïc Payol
+    browse: Choose a file # Addition du 13 déc. 16h42 par Loïc Payol
     valid:
         "true":
             success: "Well done!"
