@@ -1,3 +1,46 @@
-# Remplissez ce document en vous basant sur fr_FR.yml.
-# Au fil de vos éditions, vous pourrez sauvegarder ce document et rafraîchir
-# la page web pour voir le résultat.
+img.logo: Logo Filogis
+error: Ha ocurrido un error
+verify:
+    valid:
+        "true":
+            success: Todo un éxito.
+            message: El archivo enviado es auténtico.
+        "false":
+            warning: "Atención:"
+            message: El archivo enviado no es auténtico.
+            hint: |
+                Compruebe los siguientes puntos:<ul></ul>
+                    <li>¿Ha enviado el archivo correcto?</li>
+                    
+                        ¿Ha enviado la firma digital correcta?
+                    </li>
+                    ¿La firma es la correspondiente al 
+                        archivo enviado?
+                    </li>
+                    Puede que haya ocurrido un error de transferencia
+                        en la transferencia 
+                        inicial del documento. Intente descargar de nuevo el
+                         documento que desea verificar. 
+                    </li>
+                <br>Si a pesar de todo, la prueba de autenticidad sigue dando error, contacte con su traductor para cambiar el documento.
+    title: Verificación de autenticidad
+    form:
+        file:
+            title: Archivo
+            help: Seleccione el archivo que desea verificar
+        sign:
+            title: Firma digital
+            help: Seleccione la firma digital que le han proporcionado
+        submit: Verificar
+    faq:
+        title: Preguntas frecuentes
+        q1:
+            question: "¿Cómo funciona el sistema de verificación de  autenticidad?"
+            response: |
+                    Utilizamos el principio de criptografía asimétrica, con claves RSA. El archivo de firma, que se genera con el algoritmo SHA512, permite detectar cualquier cambio en el archivo de origen. Compruébelo usted mismo: modifique ligeramente el archivo que desea verificar, verá que el archivo se marcará como ’no auténtico’.
+        q2:
+            question: "Me gustaría verificar la autenticidad de un documento recibido, pero no tengo firma. ¿Qué puedo hacer?"
+            response: Pida a su traductor que le envíe el archivo de firma digital.
+        q3:
+            question: "Me gustaría comprobar yo mismo la autenticidad de mi documento.  ¿Cómo puedo hacerlo?"
+            response: "Si se plantea esta pregunta, es que ya sabe cómo funciona la verificación de firmas digitales. Por  tanto, puede descargar <a href=\"%href%\">nuestra clave pública</a> y verificar por sí mismo la autenticidad del documento."

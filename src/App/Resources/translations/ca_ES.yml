@@ -2,7 +2,7 @@ title: Filogis
 img.logo: Logo Filogis
 error: S'ha produït un error
 verify:
-    browse: <TODO> À compléter <TODO>
+    browse: Seleccioneu un arxiu
     valid:
         "true":
             success: "Molt bé! "
