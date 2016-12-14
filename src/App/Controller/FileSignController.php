@@ -10,8 +10,10 @@
 
 namespace App\Controller;
 
+use Palra\OpenSSL\PrivateKey;
 use Palra\OpenSSL\PublicKey;
 use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -29,6 +31,53 @@ class FileSignController
         $res->setContent($pkey->export());
         $res->headers->set('Content-Type', 'application/octet-stream');
         $res->headers->set('Content-Disposition', 'attachment; filename="public_key.pem"');
+
+        return $res;
+    }
+
+    public function generateIndexAction(Application $app)
+    {
+        /** @var \Twig_Environment $twig */
+        $twig = $app['twig'];
+        return $twig->render('generate.html.twig');
+    }
+
+    public function generatePostAction(Request $request, Application $app)
+    {
+        $passphrase = $request->request->get('passphrase');
+        $confirm = $request->request->get('confirm');
+
+        /** @var \Twig_Environment $twig */
+        $twig = $app['twig'];
+
+        if ($passphrase !== $confirm) {
+            return $twig->render('generate.html.twig', array(
+                'error' => 'Les deux phrases de passe ne sont pas identiques'
+            ));
+        }
+
+        // Génération de la clé privée
+        $privateKey = PrivateKey::generate(8192);
+        $publicKey = $privateKey->getPublicKey();
+
+        $zip = new \ZipArchive();
+        $name = tempnam('', 'pkey-');
+        if (false === $zip->open($name, \ZipArchive::CREATE)) {
+            return $twig->render('generate.html.twig', array(
+                'error' => 'Erreur interne'
+            ));
+        }
+
+        $zip->addFromString('public_key.pem', $publicKey->export());
+        $zip->addFromString('private_key.pem', $privateKey->export($passphrase));
+        $zip->close();
+
+        $res = new Response();
+        $res->setContent(file_get_contents($name));
+        $res->headers->set('Content-Type', 'application/zip');
+        $res->headers->set('Content-Disposition', 'attachment; filename="p_keys.zip"');
+
+        unlink($name);
 
         return $res;
     }

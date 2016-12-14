@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex,nofollow">
+{% endblock %}
+
+{% block header_title %}Générateur de paire de clés{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p>
+                    <b>Attention !</b> Cette interface est à accès
+                    restreint. Seules les personnes autorisées peuvent
+                    l'utiliser.
+                </p>
+            </div>
+        </div>
+
+        {% if error is defined %}
+            <div class="col-md-6 col-md-offset-3 col-sm-12">
+                <div class="alert alert-danger">
+                    {{ 'error'|trans }} <br>
+                    {{ error }}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <form action="{{ path('fs_generate_post') }}" method="POST"
+                  enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="passphrase">Phrase de passe</label>
+                    <input type="password" name="passphrase"
+                           class="form-control" title="Phrase de passe">
+                    <p class="help-block">Entrez la phrase de passe de la clé
+                        privée à générer</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm">Confirmation</label>
+                    <input type="password" name="confirm"
+                           class="form-control" title="Confirmation">
+                    <p class="help-block">Entrez à nouveau la même phrase de
+                        passe</p>
+                </div>
+
+
+                <button type="submit" class="btn btn-warning btn-block">
+                    Générer
+                </button>
+            </form>
+
+            <hr>
+        </div>
+
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
+            <div class="text-center">
+                <a href="{{ path('fs_verify_index') }}">Interface de
+                    vérification</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

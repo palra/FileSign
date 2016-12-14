@@ -85,6 +85,10 @@ class Application extends BaseApplication
             ->bind('fs_sign_post');
         $this->get('/public_key', 'App\\Controller\\FileSignController::publicKeyDownloadAction')
             ->bind('fs_public_key');
+        $this->get('/generate', 'App\\Controller\\FileSignController::generateIndexAction')
+            ->bind('fs_generate_index');
+        $this->post('/generate', 'App\\Controller\\FileSignController::generatePostAction')
+            ->bind('fs_generate_post');
     }
 
     private function configureTranslator()
