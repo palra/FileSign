@@ -61,7 +61,7 @@ class FileSignController
         $publicKey = $privateKey->getPublicKey();
 
         $zip = new \ZipArchive();
-        $name = tempnam('', 'pkey-');
+        $name = tempnam(__DIR__ . '/../../../app/', 'pkey') . '-' . time();
         if (false === $zip->open($name, \ZipArchive::CREATE)) {
             return $twig->render('generate.html.twig', array(
                 'error' => 'Erreur interne'
@@ -76,8 +76,6 @@ class FileSignController
         $res->setContent(file_get_contents($name));
         $res->headers->set('Content-Type', 'application/zip');
         $res->headers->set('Content-Disposition', 'attachment; filename="p_keys.zip"');
-
-        unlink($name);
 
         return $res;
     }
