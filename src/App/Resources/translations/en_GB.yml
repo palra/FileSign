@@ -1,3 +1,4 @@
+title: Filogis
 img.logo: Filogis Logo
 error: An error occurred
 verify:
@@ -5,10 +6,10 @@ verify:
     valid:
         "true":
             success: "Well done!"
-            message: The file sent is authentic.
+            message: The file is authentic.
         "false":
             warning: "Careful!"
-            message: The file sent is not authentic.
+            message: The file is not authentic.
             hint: |
                 Check the following points:<ul>
                     <li>Did you send the right file?</li>
@@ -21,14 +22,14 @@ verify:
                     <li>It is possible that a transfer error may have taken
                         place during the initial
                         transfer of the document. Try re-downloading the
-                        document to check.
+                        document.
                     </li>
-                </ul><br>If the authenticity test still fails, contact your translator for a new document exchange.
+                </ul><br>If the authenticity test still fails, contact your translator to obtain a new document.
     title: Verification of authenticity
     form:
         file:
             title: File
-            help: Select the file to check
+            help: Select the file
         sign:
             title: Digital signature
             help: Select the digital signature that you were provided
@@ -38,9 +39,9 @@ verify:
         q1:
             question: "How does the authenticity verification system work?"
             response: |
-                    We use the principle of asymmetric cryptography, with RSA keys. The signature file is generated with the SHA512 algorithm, which helps to detect even the slightest changes in the source file. Try it yourself: change the file to check very slightly, and you will see that the file will be marked as non-authentic.
+                    We use the principle of asymmetric cryptography, including RSA keys. The signature file is generated with the SHA512 algorithm, which helps to detect even the slightest changes in the source file. Try it by yourself: change the file very slightly, and you will see that the file will be identified as non-authentic.
         q2:
-            question: "I would like to check the authenticity of a document received, but I have no signature. What do I do?"
+            question: "I would like to check the authenticity of a document, but I have no signature. What do I do?"
             response: Ask your translator to send you the digital signature file.
         q3:
             question: "I'd like to check the authenticity of my document myself. How do I do that?"

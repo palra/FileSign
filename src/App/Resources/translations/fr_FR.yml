@@ -3,10 +3,10 @@ img.logo: Logo Filogis
 error: Une erreur est survenue
 
 verify:
-    browse: Choissisez un fichier
+    browse: Choisissez un fichier
     valid:
         "true":
-            success: Succès !
+            success: Bravo !
             message: Le fichier envoyé est authentique.
         "false":
             warning: Attention !
@@ -21,15 +21,15 @@ verify:
                     <li>La signature est-elle bien celle associée au
                         fichier envoyé ?
                     </li>
-                    <li>Il se peut qu'une erreur de transfert ait eu
-                        lieu lors du transfert
-                        initial du document. Tentez de retélécharger le
+                    <li>Il se peut qu'une erreur de transfert se soit produite
+                        lors du transfert
+                        initial du document. Tentez de télécharger à nouveau le
                         document à vérifier
                     </li>
                 </ul>
                 <br>
-                Si malgré tout le test d'authenticité échoue encore,
-                contactez votre traducteur afin de procéder
+                Si malgré tout le test d'authenticité échoue,
+                contactez votre cabinet de traduction afin de procéder
                 à un nouvel échange de document.
 
     title: Vérification d'authenticité
@@ -47,18 +47,18 @@ verify:
             question: Comment fonctionne le système de vérification d'authenticité ?
             response: >
                 Nous utilisons le principe de la cryptographie asymétrique, avec
-                des clefs RSA. Le fichier de signatutre, lui, est généré avec
+                des clefs RSA. Le fichier de signature est généré avec
                 l'algorithme SHA512, ce qui permet de détecter le moindre
-                changement dans le fichier source. Essayez par vous-même :
+                changement dans le fichier source. Essayez vous-même :
                 modifiez très légèrement le fichier à vérifier, vous verrez
-                alors que le fichier sera marqué comme non-authentique.
+                alors que le fichier sera identifié comme non-authentique.
         q2:
             question: J'aimerais vérifier l'authenticité d'un document reçu, mais je n'ai pas de signature. Que faire ?
-            response: Demandez à votre traducteur de vous envoyer le fichier de signature numérique.
+            response: Demandez à votre cabinet de traduction de vous envoyer le fichier de signature numérique.
         q3:
             question: J'aimerais vérifier moi-même l'authenticité de mon document. Comment faire ?
             response: >
-                Si vous vous posez cette question, vous savez à priori comment
+                Si vous vous posez cette question, vous savez a priori comment
                 fonctionne la vérification de signatures numériques. Vous pouvez
                 donc télécharger <a href="%href%">notre clé publique</a> et
                 vérifier par vous même l'authenticité du document.

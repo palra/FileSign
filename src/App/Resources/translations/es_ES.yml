@@ -1,6 +1,8 @@
+title: Filogis
 img.logo: Logo Filogis
 error: Ha ocurrido un error
 verify:
+    browse: Seleccione un archivo 
     valid:
         "true":
             success: Todo un éxito.
@@ -17,7 +19,7 @@ verify:
                     ¿La firma es la correspondiente al 
                         archivo enviado?
                     </li>
-                    Puede que haya ocurrido un error de transferencia
+                    Puede que haya ocurrido un error
                         en la transferencia 
                         inicial del documento. Intente descargar de nuevo el
                          documento que desea verificar. 
@@ -42,5 +44,5 @@ verify:
             question: "Me gustaría verificar la autenticidad de un documento recibido, pero no tengo firma. ¿Qué puedo hacer?"
             response: Pida a su traductor que le envíe el archivo de firma digital.
         q3:
-            question: "Me gustaría comprobar yo mismo la autenticidad de mi documento.  ¿Cómo puedo hacerlo?"
-            response: "Si se plantea esta pregunta, es que ya sabe cómo funciona la verificación de firmas digitales. Por  tanto, puede descargar <a href=\"%href%\">nuestra clave pública</a> y verificar por sí mismo la autenticidad del documento."
+            question: "Me gustaría comprobar yo mismo la autenticidad de mi documento. ¿Cómo puedo hacerlo?"
+            response: "Si se plantea esta pregunta, es que ya sabe cómo funciona la verificación de firmas digitales. Por tanto, puede descargar <a href=\"%href%\">nuestra clave pública</a> y verificar por sí mismo la autenticidad del documento."

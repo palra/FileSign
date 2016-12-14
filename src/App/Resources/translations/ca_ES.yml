@@ -35,7 +35,7 @@ verify:
             help: Seleccioneu la signatura digital que us han enviat
         submit: Comprovar
     faq:
-        title: PREGUNTES FREQÜENTS
+        title: Preguntes freqüents
         q1:
             question: "¿Com funciona el sistema de verificació d'autenticitat?"
             response: |
